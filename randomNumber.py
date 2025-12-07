@@ -18,6 +18,7 @@ print(f"Добре {nickname}, я загадав рандом число вга�
 
 def randomNumber():
     global attempts
+    global random_number
     user_number = input("Введи число:")
 
     is_entered_number = user_number.isdigit()
@@ -40,13 +41,26 @@ def randomNumber():
         attempts = attempts + 1
     elif random_number == user_int:
         print("Ти вгадав! 🎉")
-        print(f"Кількість твоїх спроб становить {attempts}")
-        quit("The end")
+        print(f"Кількість твоїх спроб становить {attempts} ")
+        user_input = input("хочеш зіграти ще раз?")
+        
+        if user_input.lower() != "yes":
+            print("Спасибо за игру! До свидания.")
+            quit("The end")
+        else:
+            random_number = random.randint(MIN_NUMBER,MAX_NUMBER)
+
     else:
         print("загадане число меньше")
         attempts = attempts + 1
 
-randomNumber()
+#randomNumber()
+
 
 while True:
     randomNumber()
+
+
+
+
+
