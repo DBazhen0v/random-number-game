@@ -12,10 +12,12 @@ nickname = input(f"Ласкаво просимо до гри, вгадай чи�
 # 2 generate random integer number for instance 11
 random_number = random.randint(MIN_NUMBER,MAX_NUMBER)
 
+attempts = 1
 # 3 get user input for instance "11"
 print(f"Добре {nickname}, я загадав рандом число вгадай яке?")
-def randomNumber():
 
+def randomNumber():
+    global attempts
     user_number = input("Введи число:")
 
     is_entered_number = user_number.isdigit()
@@ -35,11 +37,14 @@ def randomNumber():
 
     if is_entered_number & (random_number > user_int):
         print(f"загадане число більше")
+        attempts = attempts + 1
     elif random_number == user_int:
-        print("Числа рівні, ти вгадав! ")
+        print("Ти вгадав! 🎉")
+        print(f"Кількість твоїх спроб становить {attempts}")
         quit("The end")
     else:
         print("загадане число меньше")
+        attempts = attempts + 1
 
 randomNumber()
 
